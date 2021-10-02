@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <button id = "btnRepos">Repos</button>
+    <button id="btnIssues">Issues</button>
+    <button id="btnCommits">Commits</button>
+    <div id = "divResult">
+
+    </div>
+
+    <script>
+        const btnRepos = document.getElementById("btnRepos");
+        const btnIssues = document.getElementById("btnIssues");
+        const btnCommits = document.getElementById("btnCommits");
+        const resultsDiv = document.getElementById("divResult");
+        btnRepos.addEventListener("click", getRepos);
+        btnIssues.addEventListener("click", getIssues);
+        btnCommits.addEventListener("click", getCommits);
+
+        async function getRepos(){
+            clear();
+            const url = "https://api.github.com/search/repositories?q=stars:100000..300000";
+            const response = await axios.get(url);
+            response.data.items.forEach(function(i){
+                const anchor = document.createElement("a");
+                anchor.href = i.html_url;
+                anchor.textContent = i.full_name;
+                resultsDiv.appendChild(anchor);
+                resultsDiv.appendChild(document.createElement("br"));
+            });
+            //console.log(response);
+        }
+        async function getIssues(){
+            clear();
+            const url = "https://api.github.com/search/issues?q=author:raisedadead repo:freeCodeCamp/freeCodeCamp";
+            const response = await axios.get(url);
+            response.data.items.forEach(function(i){
+                const a = document.createElement("a");
+                a.href = i.html_url;
+                a.textContent = i.title;
+                resultsDiv.appendChild(a);
+                resultsDiv.appendChild(document.createElement("br"));
+            })
+        }
+
+        async function getCommits(){
+            clear();
+            const url = "https://api.github.com/search/commits?q=test repo:freeCodeCamp/freeCodeCamp";
+            const header = {
+                "Accept":"application/vnd.github.v3+jso"
+            };            
+            const response = await axios.get(url,{"headers":header});
+            console.log(response.data);
+            response.data.items.forEach(function(i){
+                const a = document.createElement("a");
+                a.href = i.html_url;
+                a.textContent = i.commit.message;
+                resultsDiv.appendChild(a);
+                resultsDiv.appendChild(document.createElement("br"));
+            })
+        }
+
+        function clear(){
+            while(resultsDiv.firstChild){
+                resultsDiv.removeChild(divResult.firstChild);
+            }
+        }
+    </script>
+</body>
+</html>

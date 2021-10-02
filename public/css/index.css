@@ -1,0 +1,107 @@
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-block-size: 100%;
+  min-inline-size: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  background-color: #000146;
+}
+
+html {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+h1{
+  text-align: center;
+  position: relative;
+  width:90%;
+  color: #FF2281;
+}
+
+h1::before {  
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+h1:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+h1:hover{
+  color: white;
+}
+
+h1::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  inset: 0 0 0 0;
+  background: #B76CFD;
+  z-index: -1;
+  transition: transform .3s ease;
+}
+  
+#submitName {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#submitName button, #submitName form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#submitName form{
+  margin-top: 8%;
+  width: 200%;
+}
+
+#submitName input{
+  width: 150%;
+  height: 120%;
+  transform: translate(-15%, 0%);
+  background-color: #75D5FD;
+  color: #000000;
+  font-weight: bold;
+  border-radius: 0.3em;
+}
+
+#submitName input:focus{
+  background-color: #b0e6fd;
+}
+
+#submitName button{
+  margin: 2.6rem 0rem;
+  padding: 0.5rem 1.2rem;
+  letter-spacing: 2px;
+  border-radius: 1px;
+  background: none;
+  color: #FF2281;
+  border: 2px solid;
+}
+
+#submitName button:hover{
+  border-color:#B76CFD;
+  color: #edd9ff;
+  box-shadow: 0 0.7em 0.7em -0.3em #edd9ff;
+  transform: translateY(-0.25em);
+}
+
+@media (orientation: landscape) {
+  body {
+    grid-auto-flow: column;
+  }
+}

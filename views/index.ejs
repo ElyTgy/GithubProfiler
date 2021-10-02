@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("partials/header.ejs") %>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <script type="text/javascript" src="../public/js/index.js"></script>
+    <link rel="stylesheet" href="../public/css/index.css">
+    <body>
+        <div id="submitName">
+            <h1>An easy way to summarize your activity on github</h1>
+            <form action="/user" method="POST" class="validate">
+                <div>
+                    <input type="text" 
+                    name="username" 
+                    id="username" 
+                    placeholder="github username ie. ElyTgy"
+                    value=""
+                    required>
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+                <button>Submit</button>
+            </form>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
