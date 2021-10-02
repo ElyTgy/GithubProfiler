@@ -1,8 +1,4 @@
-body{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+body {
   min-block-size: 100%;
   min-inline-size: 100%;
   margin: 0;
@@ -17,38 +13,17 @@ html {
   inline-size: 100%;
 }
 
-h1{
+h1 {
   text-align: center;
   position: relative;
-  width:90%;
-  color: #FF2281;
+  width: 90%;
+  color: #ff2281;
 }
 
-h1::before {  
-  transform: scaleX(0);
-  transform-origin: bottom right;
+h1:hover {
+  text-shadow: 1px 1px 2px pink;
 }
 
-h1:hover::before {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-h1:hover{
-  color: white;
-}
-
-h1::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  inset: 0 0 0 0;
-  background: #B76CFD;
-  z-index: -1;
-  transition: transform .3s ease;
-}
-  
 #submitName {
   display: flex;
   flex-direction: column;
@@ -57,48 +32,66 @@ h1::before {
   height: 100vh;
 }
 
-#submitName button, #submitName form {
+#submitName button,
+#submitName form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#submitName form{
+#submitName form {
   margin-top: 8%;
   width: 200%;
 }
 
-#submitName input{
+#submitName input {
   width: 150%;
   height: 120%;
   transform: translate(-15%, 0%);
-  background-color: #75D5FD;
-  color: #000000;
+  background: none;
+  color: #b76cfd;
   font-weight: bold;
   border-radius: 0.3em;
+  border: 3px solid;
 }
 
-#submitName input:focus{
-  background-color: #b0e6fd;
+#submitName input:focus {
+  color: white;
 }
 
-#submitName button{
+#submitName button {
   margin: 2.6rem 0rem;
   padding: 0.5rem 1.2rem;
   letter-spacing: 2px;
   border-radius: 1px;
   background: none;
-  color: #FF2281;
+  color: #ff2281;
   border: 2px solid;
+  position: relative;
 }
 
-#submitName button:hover{
-  border-color:#B76CFD;
+#submitName button:hover {
+  border-color: #b76cfd;
   color: #edd9ff;
   box-shadow: 0 0.7em 0.7em -0.3em #edd9ff;
   transform: translateY(-0.25em);
 }
+
+canvas {
+  vertical-align: bottom;
+} 
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000146;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+} 
 
 @media (orientation: landscape) {
   body {
