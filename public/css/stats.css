@@ -1,20 +1,73 @@
 .parent {
-    display: flex;
-    height: 100vh;
+  display: flex;
+  height: 100vh;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
   }
   
-  .child {
-    flex-grow: 1;
-  }
-  
-  .left {
-    background: #ddd;
-  }
-  
-  .center {
-    background: #666;
-  }
-  
-  .right {
-    background: #999;
-  }
+.child {
+  display: flex;
+  flex-grow: 1;
+}
+
+#user-info{
+display: block;
+width:100%;
+height: min-content;
+}
+
+#top-user-info{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  background-color: rgb(90, 90, 90);
+
+}
+
+#bottom-user-info{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(90, 90, 90);
+  border-radius: 10px;
+  padding: 2% 0%;
+  margin: 2% 2%;
+}
+
+#top-user-info .user-info-item{
+  margin: 1% 0%;
+}
+
+.user-info-item{
+  color: white;
+  text-decoration: none;
+}
+
+#username:hover{
+  color: rgb(73, 255, 246);
+}
+
+img{
+  border-radius: 50%;
+  border: 20% solid;
+}
+
+.left {
+  background: #ddd;
+}
+
+.center {
+  background: #666;
+}
+
+.right {
+  background: #999;
+}

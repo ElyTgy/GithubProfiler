@@ -18,11 +18,9 @@ h1 {
   position: relative;
   width: 90%;
   color: #ff2281;
+  text-shadow: 2px 2px 2px pink;
 }
 
-h1:hover {
-  text-shadow: 1px 1px 2px pink;
-}
 
 #submitName {
   display: flex;
@@ -52,7 +50,6 @@ h1:hover {
   background: none;
   color: #b76cfd;
   font-weight: bold;
-  border-radius: 0.3em;
   border: 3px solid;
 }
 

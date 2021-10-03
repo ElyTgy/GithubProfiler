@@ -4,12 +4,12 @@ const ejsMate = require('ejs-mate');
 //const catchAsync = require('./utils/catchAsync');
 // /const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override'); 
-const { readdirSync } = require('fs');
 const app = express();
 
 //TODO: Fix duplicate links in ejs files with partials
 //TODO: Cache data after fetching it
 //TODO: Partial for name submition form
+//TODO: error page if the req.body.type isnt user and say that it only works for users now
 
 app.engine("ejs", ejsMate);
 app.set('view engine', 'ejs');
@@ -24,8 +24,18 @@ app.get("/", function (req, res){
     res.render("index.ejs");
 })
 
-app.post("/user", function(req, res){
-    res.render("stats.ejs");
+app.post("/stats", function(req, res){
+    res.render("stats.ejs", {"_username":req.body.username});
+})
+
+app.post("/error", function(req, res){
+    res.send("oops");
+    console.log("here");
+})
+
+app.get("/error", function(req, res){
+    res.send("oops");
+    console.log("here");
 })
 
 app.listen(3000, ()=>{

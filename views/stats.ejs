@@ -2,11 +2,35 @@
 <html lang="en">
     <%- include("partials/header.ejs") %>
     <link rel="stylesheet" href="../public/css/stats.css">
+    <link rel="stylesheet" href="../public/css/style.css">
 <body>
     <div class="parent">
-        <div class="child left">Left</div>
-        <div class="child center">Center</div>
-        <div class="child right">Right</div>
+        <div class="child left">
+            <div id="user-info">
+                <div id="top-user-info">
+                    <img class="user-info-item" src="https://avatars.githubusercontent.com/u/57841857?v=4" alt="Avatar" id="avatar" width="200" height="200"><!--avatar_url-->
+                    <a href="" class="user-info-item" id="username"><%=_username%></a><!--html_url-->
+                    <span class="user-info-item" id="name">Elli</span><!--name-->
+                </div>
+                <div id="bottom-user-info">
+                    <span class="user-info-item" id="comapny">My Company</span><!--company-->
+                    <span class="user-info-item" id="blog">My bolg</span><!--blog-->
+                    <span class="user-info-item" id="location">Canada</span><!--location-->
+                    <span class="user-info-item" id="bio">My bio</span><!--bio-->
+                    <span class="user-info-item" id="email">EMAIL</span><!--email-->
+                    <span class="user-info-item" id="public-repos">20</span><!--public_repos-->
+                    <span class="user-info-item" id="followers">1</span><!--followers-->
+                    <span class="user-info-item" id="following">13</span><!--following-->
+                    <span class="user-info-item" id="creation-date">2124</span><!--created_at-->
+                    <span class="user-info-item" id="account-life">2 years</span><!--created_at-->
+                </div>
+            </div>
+        </div>
+        
+        <!--<div class="child center">Center</div>
+        <div class="child right">Right</div>-->
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../public/js/stats.js" data-args=<%=_username%>></script>
 </body>
 </html>
