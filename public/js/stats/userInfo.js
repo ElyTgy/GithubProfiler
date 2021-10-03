@@ -1,6 +1,3 @@
-//Wrong user name
-//not user
-
 const username = (document.currentScript.dataset.args).toLowerCase();
 
 const item_avatar = document.getElementById("avatar");
@@ -40,8 +37,6 @@ function addInfo(element, data, tag=null){
         else{element.textContent = data;}
     }
     else{
-        console.log(element.parentNode.parentNode);
-        console.log(element.parentNode);
         const parent = element.parentNode
         if(parent.tagName == "SECTION"){
             parent.parentNode.removeChild(parent);
