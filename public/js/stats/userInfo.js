@@ -1,4 +1,4 @@
-const username = (document.currentScript.dataset.args).toLowerCase();
+let username = (document.currentScript.dataset.args).toLowerCase();
 
 const item_avatar = document.getElementById("avatar");
 const item_username = document.getElementById("username");
@@ -24,17 +24,17 @@ async function ReqUser(){
     }
     else{
         console.log("already have data");
-        console.dir(JSON.parse(data));
         data = JSON.parse(data);
     }
     return data
 }
 
-function addInfo(element, data, tag=null){
-    if (data){
+function addInfo(element, value, tag=null){
+    if(!element){return;}
+    if (value){
         if(tag){
-        element[tag] = data;}
-        else{element.textContent = data;}
+        element[tag] = value;}
+        else{element.textContent = value;}
     }
     else{
         const parent = element.parentNode
@@ -47,44 +47,53 @@ function addInfo(element, data, tag=null){
     }
 }
 
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 function parseDateToArr(date){
     let arr = date.split("-")
-    console.log(arr);
     switch(arr[1])
     {
         case "01":
-            arr[1] = "January";
+            arr[1] = months[0];
             break;
         case "02":
-            arr[1] = "Febrruary";
+            arr[1] = months[1];
             break;
         case "03":
-            arr[1] = "March";
+            arr[1] = months[2];
             break;
         case "04":
-            arr[1] = "April";
+            arr[1] = months[3];
             break;
         case "05":
-            arr[1] = "May";
+            arr[1] = months[4];
             break;
         case "06":
-            arr[1] = "June";
+            arr[1] = months[5];
             break;
         case "07":
-            arr[1] = "July";
+            arr[1] = months[6];
+            break;
         case "08":
-            arr[1] = "August";
+            arr[1] = months[7];
+            break;
         case "09":
-            arr[1] = "September";
+            arr[1] = months[8];
+            break;
         case "10":
-            arr[1] = "October";
+            arr[1] = months[9];
+            break;
         case "11":
-            arr[1] = "November";
+            arr[1] = months[10];
+            break;
         case "12":
-            arr[1] = "December";
+            arr[1] = months[11];
+            break;
     }
     return arr;
 }
+function GetDateISO8601(str)
+{return str.substring(0, str.indexOf("T"));}
+
 
 ReqUser().then(function(data){
     addInfo(item_avatar, data.avatar_url, "src");
@@ -92,13 +101,15 @@ ReqUser().then(function(data){
     addInfo(item_name, data.name);
     addInfo(item_company, data.comapny);
     addInfo(item_blog, data.blog);
+    if(document.querySelector("#blog .value"))
+    {addInfo(item_blog, data.blog, "href");}
     addInfo(item_location, data.location);
     addInfo(item_email, data.email);
     addInfo(item_public_repos, data.public_repos);
     addInfo(item_followers, data.followers);
     addInfo(item_following, data.following);
     
-    let creation_time = parseDateToArr(data.created_at.substring(0, data.created_at.indexOf("T")));
+    let creation_time = parseDateToArr(GetDateISO8601(data.created_at));
     addInfo(item_creation_date, `${creation_time[1]} ${creation_time[0]}`);
     addInfo(item_account_life, `${new Date().getFullYear() - creation_time[0]} years ago`);
 });

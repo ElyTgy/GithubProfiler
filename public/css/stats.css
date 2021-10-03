@@ -30,7 +30,7 @@ height: min-content;
 
 }
 
-#bottom-user-info{
+.card{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -49,12 +49,12 @@ height: min-content;
     margin: 0.5em 0.9em;
 }
 
-.user-info-item{
+.user-info-item, a{
   color: white;
   text-decoration: none;
 }
 
-#username:hover{
+a:hover{
   color: rgb(73, 255, 246);
 }
 

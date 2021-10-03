@@ -9,6 +9,7 @@ const app = express();
 
 //TODO: Fix duplicate links in ejs files with partials
 //TODO: Partial for name submition form
+//TODO: put parse date and months in utils.js
 
 app.engine("ejs", ejsMate);
 app.set('view engine', 'ejs');

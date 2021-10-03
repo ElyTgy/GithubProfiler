@@ -10,54 +10,58 @@
                 <div id="top-user-info">
                     <img class="user-info-item" src="https://avatars.githubusercontent.com/u/57841857?v=4" alt="Avatar" id="avatar" width="200" height="200"><!--avatar_url-->
                     <a href="" class="user-info-item" id="username"><%=_username%></a><!--html_url-->
-                    <span class="user-info-item" id="name">Elli</span><!--name-->
+                    <span class="user-info-item" id="name"></span><!--name-->
                 </div>
-                <div id="bottom-user-info">
+                <div id="bottom-user-info" class="card">
                     <section class="user-info-item" id="comapny">
                         <span class="title">comapny</span>
-                        <span class="value">My Company</span>
+                        <span class="value"></span>
                     </section>
                     <section class="user-info-item" id="blog">
                         <span class="title">blog</span>
-                        <span class="value">My Blog</span>
+                        <a class="value"></a>
                     </section>
                     <section class="user-info-item" id="location">
                         <span class="title">location</span>
-                        <span class="value">Canada</span>
+                        <span class="value"></span>
                     </section>
                     <section class="user-info-item" id="email">
                         <span class="title">email</span>
-                        <span class="value">ytaghavi@yahoo.com</span>
+                        <span class="value"></span>
                     </section>
                     <section class="user-info-item" id="public-repos">
                         <span class="title">repos</span>
-                        <span class="value">222</span>
+                        <span class="value"></span>
                     </section>
                     <section class="user-info-item" id="followers">
                         <span class="title">followers</span>
-                        <span class="value">1054</span>
+                        <span class="value"></span>
                     </section>
                     <section class="user-info-item" id="following">
                         <span class="title">following</span>
-                        <span class="value">2000</span>
+                        <span class="value"></span>
                     </section>
                     <section class="user-info-item" id="creation-date">
                         <span class="title">created on</span>
-                        <span class="value">Nov 21st</span>
+                        <span class="value"></span>
                     </section>
                     <section class="user-info-item" id="account-life">
                         <span class="title">created</span>
-                        <span class="value">5 years ago</span>
+                        <span class="value"></span>
                     </section>
                 </div>
+            </div>
+            <div id="commits" class="card">
+                <canvas id="monthVsCommits"></canvas>
             </div>
         </div>
         
         <!--<div class="child center">Center</div>
-        <div class="child right">Right</div>-->
+            <div class="child right">Right</div>-->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../public/js/stats/userInfo.js" data-args=<%=_username%>></script>
-    <script src="../public/js/stats/userInfo.js" data-args=<%=_username%>></script>
+    <script src="../public/js/stats/graphs.js"></script>
 </body>
 </html>
