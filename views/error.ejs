@@ -1,12 +1,19 @@
-<% layout("Layouts/boilerplate.ejs")%>
-<div class="row">
-    <div class="col-6 offset-3">
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Error <%=status%></h4>
-            <p><%=message%></p>
-            <p><%=err.stack%></p>
-            <hr>
-            <p class="mb-0">Contanct us <a href="https://example.com/">here</a> or go back <a href=http://localhost:3000/campgrounds>home</a></p>
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("partials/header.ejs") %>
+    <link rel="stylesheet" href="../public/css/stats.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <body>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Error <%=status%></h4>
+                    <p><%=message%></p>
+                    <p><%=err.stack%></p>
+                    <hr>
+                    <p class="mb-0">go back <a href=http://localhost:3000/</a></p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </body>
+</html>

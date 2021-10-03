@@ -15,11 +15,11 @@ const item_creation_date = document.querySelector("#creation-date .value");
 const item_account_life = document.querySelector("#account-life .value");
 
 async function ReqUser(){
-    let data = localStorage.getItem(username);
+    let data = sessionStorage.getItem(username);
     if(!data){
         const url = `https://api.github.com/users/${username}`;
         data = (await axios.get(url)).data;
-        localStorage.setItem(username, JSON.stringify(data));
+        sessionStorage.setItem(username, JSON.stringify(data));
         console.log("Sent request to API");
     }
     else{
@@ -91,9 +91,16 @@ function parseDateToArr(date){
     }
     return arr;
 }
+
 function GetDateISO8601(str)
 {return str.substring(0, str.indexOf("T"));}
 
+function RandomRGB(a){
+    const r = Math.round(Math.random() * 255);
+    const g = Math.round(Math.random() * 255);
+    const b =  Math.round(Math.random() * 255);
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+}
 
 ReqUser().then(function(data){
     addInfo(item_avatar, data.avatar_url, "src");
