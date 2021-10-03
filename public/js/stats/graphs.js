@@ -27,45 +27,44 @@ function RenderBarChart(elementId, labels, data,
     };
 
     
-var ctx = document.getElementById(elementId);
-//Chart.defaults.global.defaultFontColor='red';
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data:
-    {
-        labels: labels,
-        datasets: [{
-            data: data,
-            backgroundColor: backgroundColor
-        }]
-    },
-    options: {
-       legend:{labels: {fontColor: 'orange'}},
-      title: {
-            display: true,
-            fontColor: 'blue',
-            text: 'Custom Chart Title'
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true,
-                    fontColor: 'red'
-                },
-            }],
-          xAxes: [{
-                ticks: {
-                    fontColor: 'green'
-                },
+    var ctx = document.getElementById(elementId);
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data:
+        {
+            labels: labels,
+            datasets: [{
+                data: data,
+                backgroundColor: backgroundColor
             }]
         },
-        plugins: {
-            legend: {
-              display: false
+        options: {
+        legend:{labels: {fontColor: 'orange'}},
+        title: {
+                display: true,
+                fontColor: 'blue',
+                text: 'Custom Chart Title'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true,
+                        fontColor: 'red'
+                    },
+                }],
+            xAxes: [{
+                    ticks: {
+                        fontColor: 'green'
+                    },
+                }]
+            },
+            plugins: {
+                legend: {
+                display: false
+                }
             }
-          }
-    }
-});
+        }
+    });
 }
 
 ReqCommits().then(function(data){
