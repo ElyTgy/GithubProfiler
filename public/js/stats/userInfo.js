@@ -1,22 +1,21 @@
 //Wrong user name
 //not user
 
-
 const username = (document.currentScript.dataset.args).toLowerCase();
 
 const item_avatar = document.getElementById("avatar");
 const item_username = document.getElementById("username");
 const item_name = document.getElementById("name");
-const item_company = document.getElementById("comapny");
-const item_blog = document.getElementById("blog");
-const item_location = document.getElementById("location");
-const item_bio = document.getElementById("bio");
-const item_email = document.getElementById("email");
-const item_public_repos = document.getElementById("public-repos");
-const item_followers = document.getElementById("followers");
-const item_following = document.getElementById("following");
-const item_creation_date = document.getElementById("creation-date");
-const item_account_life = document.getElementById("account-life");
+
+const item_company = document.querySelector("#comapny .value");
+const item_blog = document.querySelector("#blog .value");
+const item_location = document.querySelector("#location .value");
+const item_email = document.querySelector("#email .value");
+const item_public_repos = document.querySelector("#public-repos .value");
+const item_followers = document.querySelector("#followers .value");
+const item_following = document.querySelector("#following .value");
+const item_creation_date = document.querySelector("#creation-date .value");
+const item_account_life = document.querySelector("#account-life .value");
 
 async function ReqUser(){
     let data = localStorage.getItem(username);
@@ -31,8 +30,7 @@ async function ReqUser(){
         console.dir(JSON.parse(data));
         data = JSON.parse(data);
     }
-
-    return data;
+    return data
 }
 
 function addInfo(element, data, tag=null){
@@ -42,7 +40,15 @@ function addInfo(element, data, tag=null){
         else{element.textContent = data;}
     }
     else{
-        element.parentNode.removeChild(element);
+        console.log(element.parentNode.parentNode);
+        console.log(element.parentNode);
+        const parent = element.parentNode
+        if(parent.tagName == "SECTION"){
+            parent.parentNode.removeChild(parent);
+        }
+        else{
+            parent.removeChild(element);
+        }
     }
 }
 
@@ -85,15 +91,13 @@ function parseDateToArr(date){
     return arr;
 }
 
-
 ReqUser().then(function(data){
-    addInfo(item_avatar, "src", data.avatar_url);
-    addInfo(item_username, "href", data.html_url);
+    addInfo(item_avatar, data.avatar_url, "src");
+    addInfo(item_username, data.html_url, "href");
     addInfo(item_name, data.name);
     addInfo(item_company, data.comapny);
     addInfo(item_blog, data.blog);
     addInfo(item_location, data.location);
-    addInfo(item_bio, data.bio);
     addInfo(item_email, data.email);
     addInfo(item_public_repos, data.public_repos);
     addInfo(item_followers, data.followers);
@@ -101,5 +105,5 @@ ReqUser().then(function(data){
     
     let creation_time = parseDateToArr(data.created_at.substring(0, data.created_at.indexOf("T")));
     addInfo(item_creation_date, `${creation_time[1]} ${creation_time[0]}`);
-    addInfo(item_account_life, new Date().getFullYear() - creation_time[0]);
+    addInfo(item_account_life, `${new Date().getFullYear() - creation_time[0]} years ago`);
 });

@@ -13,16 +13,42 @@
                     <span class="user-info-item" id="name">Elli</span><!--name-->
                 </div>
                 <div id="bottom-user-info">
-                    <span class="user-info-item" id="comapny">My Company</span><!--company-->
-                    <span class="user-info-item" id="blog">My bolg</span><!--blog-->
-                    <span class="user-info-item" id="location">Canada</span><!--location-->
-                    <span class="user-info-item" id="bio">My bio</span><!--bio-->
-                    <span class="user-info-item" id="email">EMAIL</span><!--email-->
-                    <span class="user-info-item" id="public-repos">20</span><!--public_repos-->
-                    <span class="user-info-item" id="followers">1</span><!--followers-->
-                    <span class="user-info-item" id="following">13</span><!--following-->
-                    <span class="user-info-item" id="creation-date">2124</span><!--created_at-->
-                    <span class="user-info-item" id="account-life">2 years</span><!--created_at-->
+                    <section class="user-info-item" id="comapny">
+                        <span class="title">comapny</span>
+                        <span class="value">My Company</span>
+                    </section>
+                    <section class="user-info-item" id="blog">
+                        <span class="title">blog</span>
+                        <span class="value">My Blog</span>
+                    </section>
+                    <section class="user-info-item" id="location">
+                        <span class="title">location</span>
+                        <span class="value">Canada</span>
+                    </section>
+                    <section class="user-info-item" id="email">
+                        <span class="title">email</span>
+                        <span class="value">ytaghavi@yahoo.com</span>
+                    </section>
+                    <section class="user-info-item" id="public-repos">
+                        <span class="title">repos</span>
+                        <span class="value">222</span>
+                    </section>
+                    <section class="user-info-item" id="followers">
+                        <span class="title">followers</span>
+                        <span class="value">1054</span>
+                    </section>
+                    <section class="user-info-item" id="following">
+                        <span class="title">following</span>
+                        <span class="value">2000</span>
+                    </section>
+                    <section class="user-info-item" id="creation-date">
+                        <span class="title">created on</span>
+                        <span class="value">Nov 21st</span>
+                    </section>
+                    <section class="user-info-item" id="account-life">
+                        <span class="title">created</span>
+                        <span class="value">5 years ago</span>
+                    </section>
                 </div>
             </div>
         </div>
@@ -31,6 +57,6 @@
         <div class="child right">Right</div>-->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../public/js/stats.js" data-args=<%=_username%>></script>
+    <script src="../public/js/stats/userInfo.js" data-args=<%=_username%>></script>
 </body>
 </html>

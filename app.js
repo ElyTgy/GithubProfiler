@@ -7,7 +7,6 @@ const methodOverride = require('method-override');
 const app = express();
 
 //TODO: Fix duplicate links in ejs files with partials
-//TODO: Cache data after fetching it
 //TODO: Partial for name submition form
 //TODO: error page if the req.body.type isnt user and say that it only works for users now
 
@@ -26,16 +25,6 @@ app.get("/", function (req, res){
 
 app.post("/stats", function(req, res){
     res.render("stats.ejs", {"_username":req.body.username});
-})
-
-app.post("/error", function(req, res){
-    res.send("oops");
-    console.log("here");
-})
-
-app.get("/error", function(req, res){
-    res.send("oops");
-    console.log("here");
 })
 
 app.listen(3000, ()=>{
