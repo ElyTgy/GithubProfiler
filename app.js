@@ -35,7 +35,9 @@ app.get("/user", catchAsync(async function(req, res){
 }))
 
 app.use((err, req, res, next)=>{
-    const {status = 500, message="Internal Server Error"} = err
+    let {status = 500, message="Internal Server Error"} = err
+    if(message.includes("403")){message="You have the maximum number of requests you can send in one hour :("};
+    if(message.includes("404")){message="Something went wrong, please make sure you entered the correct username"};
     res.status(status)
     res.render("error.ejs",{message:message, status:status, err:err});
 })

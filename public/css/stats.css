@@ -44,6 +44,11 @@ height: min-content;
   border: 3px solid #75D5FD;
 }
 
+.graph{
+  width: 85%;
+  align-self: center;
+}
+
 canvas{
   color: white;
 }
@@ -110,5 +115,9 @@ img{
   }
   #bottom-user-info .user-info-item{
     width: 70%;
+  }
+
+  body{
+    overflow-x:hidden;
   }
 }

@@ -90,6 +90,10 @@ canvas {
   background-position: 50% 50%;
 } 
 
+body{
+  overflow: hidden;
+}
+
 @media (orientation: landscape) {
   body {
     grid-auto-flow: column;
