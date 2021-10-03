@@ -5,6 +5,7 @@ const catchAsync = require('./utils/asyncCatch');
 const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override'); 
 const axios = require('axios');
+const { allowedNodeEnvironmentFlags } = require('process');
 const app = express();
 
 //TODO: Fix duplicate links in ejs files with partials
@@ -34,6 +35,11 @@ app.get("/user", catchAsync(async function(req, res){
     res.render("stats.ejs", {"_username":username});
 }))
 
+app.get("/test", function (req, res){
+    res.render("test.ejs");
+})
+
+
 app.use((err, req, res, next)=>{
     let {status = 500, message="Internal Server Error"} = err
     if(message.includes("403")){message="You have the maximum number of requests you can send in one hour :("};
@@ -41,6 +47,7 @@ app.use((err, req, res, next)=>{
     res.status(status)
     res.render("error.ejs",{message:message, status:status, err:err});
 })
+
 
 app.listen(3000, ()=>{
     console.log("Sercing on port 3000");

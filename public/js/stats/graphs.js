@@ -16,73 +16,44 @@ async function ReqCommits(){
     return data
 }
 
-function RenderBarChart(elementId, labels, data, 
-    backgroundColor=['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)'],)
-{
-    let changeItemColor = (item) => {
-        item.scaleLabel.fontColor = rgba(255, 255, 255, 1);
-        item.ticks.fontColor = rgba(255, 255, 255, 1);
-        item.ticks.minor.fontColor = rgba(255, 255, 255, 1);
-        item.ticks.major.fontColor = rgba(255, 255, 255, 1);
-    };
-
-    
-    var ctx = document.getElementById(elementId);
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data:
-        {
-            labels: labels,
-            datasets: [{
-                data: data,
-                backgroundColor: backgroundColor
-            }]
-        },
-        options: {
-        legend:{labels: {fontColor: 'orange'}},
-        title: {
-                display: true,
-                fontColor: 'blue',
-                text: 'Custom Chart Title'
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true,
-                        fontColor: 'red'
-                    },
-                }],
-            xAxes: [{
-                    ticks: {
-                        fontColor: 'green'
-                    },
-                }]
-            },
-            plugins: {
-                legend: {
-                display: false
-                }
-            }
-        }
+function CommitsVSTimeBar(data){
+    monthsCount = {};
+    months.forEach(month=>{
+        monthsCount[month] = 0;
+    })
+     data.items.forEach(element => {
+         let month = parseDateToArr(GetDateISO8601(element.commit.author.date))[1];
+         monthsCount[month] += 1;
     });
+    console.log(monthsCount);
+
+    colors = []
+    for(let i = 0; i < 12; i++)
+    {
+        colors.push(RandomRGB(1))
+    }
+
+    RenderChart('line', "monthVsCommits", Object.keys(monthsCount), Object.values(monthsCount), colors,)
+}
+function CommitsVSDayPie(data){
+    dayCount = {};
+    weekdays.forEach(weekdays=>{
+        dayCount[weekdays] = 0;
+    })
+     data.items.forEach(element => {
+         let day = new Date(element.commit.author.date);
+         dayCount[weekdays[day.getDay()]] += 1;
+    });
+    
+    colors = []
+    for(let i = 0; i < 7; i++)
+    {
+        colors.push(RandomRGB(1))
+    }
+    RenderChart('pie', "dayVsCommits", Object.keys(dayCount), Object.values(dayCount), colors, hasLegend=true);
 }
 
 ReqCommits().then(function(data){
-       monthsCount = {};
-       months.forEach(month=>{
-           monthsCount[month] = 0;
-       })
-        data.items.forEach(element => {
-            let month = parseDateToArr(GetDateISO8601(element.commit.author.date))[1];
-            monthsCount[month] += 1;
-       });
-       console.log(monthsCount);
-
-       colors = []
-       for(let i = 0; i < 12; i++)
-       {
-           colors.push(RandomRGB(1))
-       }
-
-       RenderBarChart("monthVsCommits", Object.keys(monthsCount), Object.values(monthsCount), colors,)
+    CommitsVSTimeBar(data);
+    CommitsVSDayPie(data)
 });

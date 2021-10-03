@@ -1,5 +1,7 @@
 
 const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const weekdays = ["Sunday","Monday","Teusday","Wendsday","Thursday","Friday","Saturday"];
+
 function parseDateToArr(date){
     let arr = date.split("-")
     switch(arr[1])
@@ -52,4 +54,49 @@ function RandomRGB(a){
     const g = Math.round(Math.random() * 255);
     const b =  Math.round(Math.random() * 255);
     return `rgba(${r}, ${g}, ${b}, ${a})`;
+}
+
+function RenderChart(chartType, elementId, _label, _data, _backgroundColor, hasLegend=false)
+{
+    let ctx = document.getElementById(elementId).getContext('2d');
+    let myChart = new Chart(ctx, {
+    type: chartType,
+    data: {
+        datasets: [{
+        data: _data,
+        backgroundColor: _backgroundColor
+        }],
+        labels: _label
+    },
+    options: {
+        responsive: true,
+        plugins: {
+        datalabels: {
+            color: '#fff',
+            anchor: 'end',
+            align: 'start',
+            offset: -10,
+            borderWidth: 2,
+            borderColor: '#fff',
+            borderRadius: 25,
+            backgroundColor: (context) => {
+            return context.dataset.backgroundColor;
+            },
+            font: {
+            weight: 'bold',
+            size: '10'
+            },
+            formatter: (value) => {
+            return value + ' %';
+            }
+        }
+        }
+    }
+    })
+
+    if(!hasLegend)
+    {
+        myChart.options.plugins.legend.display = false;
+        myChart.update();
+    }
 }
